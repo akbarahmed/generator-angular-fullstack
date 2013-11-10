@@ -1,4 +1,21 @@
-# AngularJS + Express Full Stack Generator 
+# Exponential Mean Generator
+A Yeoman (yeoman.io) generator for Mongo + Express + Angular + Node (MEAN). 
+
+The Exponential Mean Generator is an opinionated generated that is created 
+with the following goals: 
+
+- To achieve maximum development velocity
+- To deliver a pure environment with no magic
+
+## No Magic
+
+Exponential deliver a pure environment with no magic. Each library 
+(ex. Express) is used as is with no changes. The reason is to ensure that the 
+original documentation can be used as is, to prevent new bugs created by 
+abstractions, and to ensure that you do not run into problems with poorly 
+implemented abstrations.
+
+# ORIGINAL README FOLLOWS
 
 A generator for AngularJS, integrated with an Express `server.js` for full stack development. 
 
@@ -14,9 +31,9 @@ Based on [generator-angular](https://github.com/yeoman/generator-angular)
 
 ## Usage
 
-Install `generator-angular-fullstack`:
+Install `generator-exponential-mean`:
 ```
-npm install -g generator-angular-fullstack
+npm install -g generator-exponential-mean
 ```
 
 Make a new directory, and `cd` into it:
@@ -24,9 +41,9 @@ Make a new directory, and `cd` into it:
 mkdir my-new-project && cd $_
 ```
 
-Run `yo angular-fullstack`, optionally passing an app name:
+Run `yo exponential-mean`, optionally passing an app name:
 ```
-yo angular-fullstack [app-name]
+yo exponential-mean [app-name]
 ```
 
 ### Express
@@ -49,15 +66,15 @@ grunt server:dist
 
 While deployment should be easy enough with the `grunt dist` build, we provide an extremely simplifed deployment process for heroku.
 
-`yo angular-fullstack:deploy heroku` for generating a deployment ready folder for [heroku.com](http://heroku.com/) from your project files. 
+`yo exponential-mean:deploy heroku` for generating a deployment ready folder for [heroku.com](http://heroku.com/) from your project files. 
 
 **Create and Deploy an app in 4 steps**
 
 1. `mkdir foo && cd foo`
 
-2. `yo angular-fullstack`
+2. `yo exponential-mean`
 
-3. `yo angular-fullstack:deploy heroku`
+3. `yo exponential-mean:deploy heroku`
 
 4. `cd heroku && git push heroku master`
 
@@ -67,19 +84,19 @@ That's it! Your app should be live and shareable. Type `heroku open` to view it.
 
 Available generators:
 
-* [angular-fullstack](#app) (aka [angular-fullstack:app](#app))
-* [angular-fullstack:controller](#controller)
-* [angular-fullstack:directive](#directive)
-* [angular-fullstack:filter](#filter)
-* [angular-fullstack:route](#route)
-* [angular-fullstack:service](#service)
-* [angular-fullstack:provider](#service)
-* [angular-fullstack:factory](#service)
-* [angular-fullstack:value](#service)
-* [angular-fullstack:constant](#service)
-* [angular-fullstack:decorator](#decorator)
-* [angular-fullstack:view](#view)
-* [angular-fullstack:deploy](#deploy)
+* [exponential-mean](#app) (aka [exponential-mean:app](#app))
+* [exponential-mean:controller](#controller)
+* [exponential-mean:directive](#directive)
+* [exponential-mean:filter](#filter)
+* [exponential-mean:route](#route)
+* [exponential-mean:service](#service)
+* [exponential-mean:provider](#service)
+* [exponential-mean:factory](#service)
+* [exponential-mean:value](#service)
+* [exponential-mean:constant](#service)
+* [exponential-mean:decorator](#decorator)
+* [exponential-mean:view](#view)
+* [exponential-mean:deploy](#deploy)
 
 **Note: Generators are to be run from the root directory of your app.**
 
@@ -88,7 +105,7 @@ Sets up a new AngularJS app, generating all the boilerplate you need to get star
 
 Example:
 ```bash
-yo angular-fullstack
+yo exponential-mean
 ```
 
 ### Deploy
@@ -96,7 +113,7 @@ Initalizes a heroku app and generates a `heroku` folder which is ready to push t
 
 Example:
 ```bash
-yo angular-fullstack:deploy heroku
+yo exponential-mean:deploy heroku
 ```
 
 ### Route
@@ -104,7 +121,7 @@ Generates a controller and view, and configures a route in `app/scripts/app.js` 
 
 Example:
 ```bash
-yo angular-fullstack:route myroute
+yo exponential-mean:route myroute
 ```
 
 Produces `app/scripts/controllers/myroute.js`:
@@ -124,7 +141,7 @@ Generates a controller in `app/scripts/controllers`.
 
 Example:
 ```bash
-yo angular-fullstack:controller user
+yo exponential-mean:controller user
 ```
 
 Produces `app/scripts/controllers/user.js`:
@@ -138,7 +155,7 @@ Generates a directive in `app/scripts/directives`.
 
 Example:
 ```bash
-yo angular-fullstack:directive myDirective
+yo exponential-mean:directive myDirective
 ```
 
 Produces `app/scripts/directives/myDirective.js`:
@@ -159,7 +176,7 @@ Generates a filter in `app/scripts/filters`.
 
 Example:
 ```bash
-yo angular-fullstack:filter myFilter
+yo exponential-mean:filter myFilter
 ```
 
 Produces `app/scripts/filters/myFilter.js`:
@@ -176,7 +193,7 @@ Generates an HTML view file in `app/views`.
 
 Example:
 ```bash
-yo angular-fullstack:view user
+yo exponential-mean:view user
 ```
 
 Produces `app/views/user.html`:
@@ -199,14 +216,14 @@ angular.module('myMod').service('myService', function () {
 });
 ```
 
-You can also do `yo angular-fullstack:factory`, `yo angular-fullstack:provider`, `yo angular-fullstack:value`, and `yo angular-fullstack:constant` for other types of services.
+You can also do `yo exponential-mean:factory`, `yo exponential-mean:provider`, `yo exponential-mean:value`, and `yo exponential-mean:constant` for other types of services.
 
 ### Decorator
 Generates an AngularJS service decorator.
 
 Example:
 ```bash
-yo angular-fullstack:decorator serviceName
+yo exponential-mean:decorator serviceName
 ```
 
 Produces `app/scripts/decorators/serviceNameDecorator.js`:
@@ -227,7 +244,7 @@ For generators that output scripts, the `--coffee` option will output CoffeeScri
 
 For example:
 ```bash
-yo angular-fullstack:controller user --coffee
+yo exponential-mean:controller user --coffee
 ```
 
 Produces `app/scripts/controller/user.coffee`:
@@ -246,7 +263,7 @@ By default, generators produce unannotated code. Without annotations, AngularJS'
 
 #### Example
 ```bash
-yo angular-fullstack:controller user --minsafe
+yo exponential-mean:controller user --minsafe
 ```
 
 Produces `app/controller/user.js`:
@@ -286,7 +303,7 @@ By default, new scripts are added to the index.html file. However, this may not 
 
 To skip adding them to the index, pass in the skip-add argument:
 ```bash
-yo angular-fullstack:service serviceName --skip-add
+yo exponential-mean:service serviceName --skip-add
 ```
 
 ## Bower Components

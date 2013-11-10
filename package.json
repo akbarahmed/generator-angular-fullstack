@@ -1,7 +1,7 @@
 {
-  "name": "generator-angular-fullstack",
-  "version": "0.1.0",
-  "description": "Yeoman generator for AngularJS with Express server",
+  "name": "generator-exponential-mean",
+  "version": "0.0.1",
+  "description": "Yeoman generator for Mongo + Express + Angular + Node (MEAN)",
   "keywords": [
     "yeoman-generator",
     "scaffold",
@@ -12,13 +12,13 @@
     "front-end",
     "app"
   ],
-  "homepage": "https://github.com/DaftMonk/generator-angular-fullstack",
-  "bugs": "https://github.com/DaftMonk/generator-angular-fullstack/issues",
-  "author": "Tyler Henkel",
+  "homepage": "https://github.com/akbarahmed/generator-exponential-mean",
+  "bugs": "https://github.com/akbarahmed/generator-exponential-mean/issues",
+  "author": "Akbar S. Ahmed",
   "main": "app/index.js",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/DaftMonk/generator-angular-fullstack.git"
+    "type": "https",
+    "url": "https://github.com/akbarahmed/generator-exponential-mean.git"
   },
   "scripts": {
     "test": "mocha"

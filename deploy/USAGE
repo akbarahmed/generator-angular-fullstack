@@ -2,7 +2,7 @@ Description:
     Creates a Heroku deployment folder and grunt configuration
 
 Example:
-    yo angular-fullstack:deploy heroku
+    yo exponential-mean:deploy heroku
 
     This will create:
         heroku deployment folder

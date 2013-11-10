@@ -2,7 +2,7 @@ Description:
     Creates a new Angular directive
 
 Example:
-    yo angular-fullstack:directive thing [--coffee] [--minsafe]
+    yo exponential-mean:directive thing [--coffee] [--minsafe]
 
     This will create:
         app/scripts/directives/thing.js

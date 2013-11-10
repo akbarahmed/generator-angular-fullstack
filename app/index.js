@@ -40,15 +40,15 @@ var Generator = module.exports = function Generator(args, options) {
     args.push('--minsafe');
   }
 
-  this.hookFor('angular-fullstack:common', {
+  this.hookFor('exponential-mean:common', {
     args: args
   });
 
-  this.hookFor('angular-fullstack:main', {
+  this.hookFor('exponential-mean:main', {
     args: args
   });
 
-  this.hookFor('angular-fullstack:controller', {
+  this.hookFor('exponential-mean:controller', {
     args: args
   });
 
