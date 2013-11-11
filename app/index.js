@@ -276,15 +276,37 @@ Generator.prototype.packageFiles = function () {
 
 Generator.prototype.serverFiles = function () {
   this.template('../../templates/express/server.js', 'server.js');
+  this.mkdir('lib');
+  this.mkdir('lib/config');
+  this.mkdir('lib/config/env');
+  this.mkdir('lib/controllers');
+  this.mkdir('lib/middleware');
+  this.mkdir('lib/routers');
+  this.mkdir('lib/views');
+  this.mkdir('lib/views/layouts');
+  // Creating a module should be a series of separate calls: create view, model, controller, + front end code
+  this.mkdir('lib/views/test');
+  this.template('../../templates/express/config/config.js', 'lib/config/config.js');
+  this.template('../../templates/express/config/passport.js', 'lib/config/passport.js');
+  this.template('../../templates/express/config/env/all.js', 'lib/config/env/all.js');
+  this.template('../../templates/express/config/env/development.json', 'lib/config/env/development.json');
+  this.template('../../templates/express/config/env/production.json', 'lib/config/env/production.json');
+  this.template('../../templates/express/config/env/test.json', 'lib/config/env/test.json');
+  this.template('../../templates/express/config/env/travis.json', 'lib/config/env/travis.json');
+  this.template('../../templates/express/controllers/test.js', 'lib/controllers/test.js');
+  this.template('../../templates/express/routers/router.js', 'lib/routers/router.js');
+  this.template('../../templates/express/routers/test.js', 'lib/routers/test.js');
   this.template('../../templates/express/api.js', 'lib/controllers/api.js');
+  this.template('../../templates/express/middleware/authorization.js', 'lib/middleware/authorization.js');
+  this.template('../../templates/express/views/layouts/main.html', 'lib/views/layouts/main.html');
+  this.template('../../templates/express/views/test/index.html', 'lib/views/test/index.html');
 };
 
 Generator.prototype.mongoFiles = function () {
-  if (!this.mongo) {
-    return;  // Skip if disabled.
-  }
-
+  this.mkdir('lib/models');
   this.template('../../templates/express/mongo/mongo.js', 'lib/db/mongo.js');
   this.template('../../templates/express/mongo/dummydata.js', 'lib/db/dummydata.js');
   this.template('../../templates/express/mongo/thing.js', 'lib/models/thing.js');
+  this.template('../../templates/express/models/user.js', 'lib/models/user.js');
 };
+

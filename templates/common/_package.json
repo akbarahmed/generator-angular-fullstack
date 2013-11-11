@@ -2,9 +2,18 @@
   "name": "<%= _.slugify(appname) %>",
   "version": "0.0.0",
   "dependencies": {
-    "express": "~3.4.3"<% if (mongo) { %>,
-    "mongoose": "~3.5.5",    
-    "async": "~0.2.9"<% } %>
+    "express": "latest",
+    "mongoose": "latest",    
+    "crypto": "latest",
+    "passport": "latest",
+    "passport-local": "latest",
+    "passport-facebook": "latest",
+    "passport-twitter": "latest",
+    "passport-github": "latest",
+    "passport-google": "latest",
+    "express3-handlebars": "latest",
+    "underscore": "latest",
+    "async": "~0.2.9"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

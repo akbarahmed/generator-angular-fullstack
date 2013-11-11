@@ -1,24 +1,43 @@
 'use strict';
 
 // Module dependencies.
-var express = require('express'),
-    path = require('path')<% if (mongo) { %>,
-    fs = require('fs')<% } %>;
+var express  = require('express'),
+    path     = require('path'),
+    exphbs   = require('express3-handlebars'),
+    fs       = require('fs'),
+    passport = require('passport');
+
+// Exponential: Authorization middleware
+var auth = require('./lib/middleware/authorization');
 
 var app = express();
-<% if (mongo) { %>
-// Connect to database
+
+// Exponential: Handlebars
+app.set('views', './lib/views');
+
+app.engine('html', exphbs({
+    extname       : '.html',
+    layoutsDir    : './lib/views/layouts',
+    defaultLayout : 'main'
+}));
+
+app.set('view engine', 'html');
+
+// Mongo: Connect to database
 var db = require('./lib/db/mongo');
 
-// Bootstrap models
+// Mongo: Bootstrap models
 var modelsPath = path.join(__dirname, 'lib/models');
 fs.readdirSync(modelsPath).forEach(function (file) {
   require(modelsPath + '/' + file);
 });
 
-// Populate empty DB with dummy data
+// Mongo: Populate empty DB with dummy data
 require('./lib/db/dummydata');
-<% } %>
+
+// Passport: Bootstrap configuration
+require('./lib/config/passport')(passport);
+
 // Controllers
 var api = require('./lib/controllers/api');
 
@@ -28,6 +47,9 @@ app.configure(function(){
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(app.router);
+    // Use Passport sessions
+    app.use(passport.initialize());
+    app.use(passport.session());
 });
 
 app.configure('development', function(){
@@ -41,8 +63,25 @@ app.configure('production', function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
-// Routes
-app.get('/api/awesomeThings', api.awesomeThings);
+// Bootstrap routers
+var routesPath = __dirname + '/lib/routers';
+
+var loadRoutes = function(path) {
+    fs.readdirSync(path).forEach(function(file) {
+        var routerPath = path + '/' + file;
+        var stat = fs.statSync(routerPath);
+        if (stat.isFile()) {
+            if (/(.*)\.(js$)/.test(file)) {
+                console.log('Exponential: Loading router ' + routerPath);
+                require(routerPath)(app, passport, auth);
+            }
+        } else if (stat.isDirectory()) {
+            loadRoutes(routerPath);
+        }
+    });
+};
+
+loadRoutes(routesPath);
 
 // Start server
 var port = process.env.PORT || 3000;
